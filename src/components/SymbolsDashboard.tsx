@@ -8,12 +8,11 @@ interface SymbolsDashboardProps {
 }
 
 export default function SymbolsDashboard({ symbols }: SymbolsDashboardProps) {
-
     return (
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 p-4">
             {symbols.map((symbol) => (
                 <div key={symbol} className="w-full">
-                    <TradingViewWidget symbol={symbol} width="100%" height={400} />
+                    <TradingViewWidget symbol={symbol}/>
                 </div>
             ))}
         </div>
