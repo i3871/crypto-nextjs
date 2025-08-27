@@ -24,3 +24,10 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+.lucide {
+    /* Change this! */
+    color: #ffadff;
+    stroke-width: 1px;
+}
