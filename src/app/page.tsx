@@ -27,8 +27,8 @@ export default function Home() {
                     <CryptoMetrics/>
 
                     <div className="flex items-center justify-center gap-4 mb-12">
-                        <TWCryptoMarketScreener screenerType={"crypto_mkt"}/>
-                        <TWCryptoMarketScreener screenerType={"performance"}/>
+                        <TWCryptoMarketScreener defaultColumn={"overview"}/>
+                        <TWCryptoMarketScreener defaultColumn={"performance"}/>
                     </div>
 
                 </div>

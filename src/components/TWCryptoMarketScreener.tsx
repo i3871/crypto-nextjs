@@ -2,12 +2,12 @@
 import React, { useEffect, useRef, memo } from "react";
 
 type TWCryptoMarketScreenerProps = {
-    screenerType: "crypto_mkt" | "performance" | "stock" | string; // allow more if needed
+    defaultColumn: "overview" | "performance" | string; // allow more if needed
     height?: number | string; // optional, default 550
 };
 
 const TWCryptoMarketScreener: React.FC<TWCryptoMarketScreenerProps> = ({
-                                                                 screenerType,
+                                                                 defaultColumn,
                                                                  height = 550,
                                                              }) => {
     const container = useRef<HTMLDivElement | null>(null);
@@ -25,8 +25,8 @@ const TWCryptoMarketScreener: React.FC<TWCryptoMarketScreenerProps> = ({
         script.async = true;
         script.innerHTML = `
       {
-        "defaultColumn": "overview",
-        "screener_type": "${screenerType}",
+        "defaultColumn": "${defaultColumn}",    
+        "screener_type": "crypto_mkt",
         "displayCurrency": "USD",
         "colorTheme": "dark",
         "isTransparent": false,
@@ -36,7 +36,7 @@ const TWCryptoMarketScreener: React.FC<TWCryptoMarketScreenerProps> = ({
       }`;
 
         container.current.appendChild(script);
-    }, [screenerType, height]);
+    }, [defaultColumn, height]);
 
     return (
         <div className="tradingview-widget-container" ref={container}>
