@@ -20,14 +20,14 @@ export default function Home() {
     useEffect(() => {
         const fetchTopCryptos = async () => {
             try {
-                const response = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=30&page=1&sparkline=false');
+                const response = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=40&page=1&sparkline=false');
                 const data: CoinData[] = await response.json();
 
-                // Filter out common stablecoins
-                const excludecoins = ['steth', 'wsteth','hype', 'weeth', 'wbtc', 'wbeth','weth', 'usdt', 'usdc','usde', 'busd', 'dai', 'frax', 'tusd', 'usdp', 'usdd', 'fei', 'gusd'];
+                // Filter out some coins
+                const excludecoins = ['steth','leo', 'cro', 'wsteth','hype', 'weeth', 'wbtc', 'wbeth','weth', 'usdt', 'usdc','usde', 'busd', 'dai', 'frax', 'tusd', 'usdp', 'usdd', 'fei', 'gusd', 'usds'];
                 const filteredData = data.filter(coin => !excludecoins.includes(coin.symbol.toLowerCase()));
 
-                const symbols = filteredData.slice(0, 30).map(coin => ({
+                const symbols = filteredData.slice(0, 40).map(coin => ({
                     proName: `BINANCE:${coin.symbol.toUpperCase()}USDT`,
                     title: coin.name
                 }));
