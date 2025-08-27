@@ -9,7 +9,7 @@ A Next.js application for monitoring interesting crypto metrics using React, Typ
 - **Runtime**: Bun
 - **UI Library**: React with TSX components
 - **State Management**: Redux Toolkit
-- **Data Storage**: Google Sheets (read/write)
+- **Database**: Supabase
 - **Linting**: ESLint
 
 ## Development Commands
@@ -30,7 +30,7 @@ A Next.js application for monitoring interesting crypto metrics using React, Typ
 - Prefer functional components with hooks
 - Use TypeScript for type safety
 - Use Redux Toolkit for state management
-- Google Sheets serves as the data persistence layer
+- Supabase serves as the database backend
 - Run `bun lint` before committing changes
 - Follow ESLint rules for code consistency
 
@@ -40,7 +40,8 @@ A Next.js application for monitoring interesting crypto metrics using React, Typ
 - Use createSlice from Redux Toolkit
 - Async actions with createAsyncThunk for API calls
 
-## Google Sheets Integration
-- Use GoogleSheetEmbed component for display
-- Google Sheets API for read/write operations
-- Store configuration and historical data in sheets
+## Supabase Integration
+- Database: PostgreSQL backend
+- Real-time subscriptions for live data
+- Row Level Security (RLS) for data access control
+- Environment variables in .env.local for configuration

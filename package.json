@@ -6,12 +6,18 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "docker:build": "docker buildx build -t crypto-nextjs .",
+    "docker:run": "docker run -p 3001:3000 --env-file .env.local crypto-nextjs",
+    "docker:compose": "docker-compose up --build"
   },
   "dependencies": {
+    "@dnd-kit/core": "^6.3.1",
+    "@dnd-kit/sortable": "^10.0.0",
+    "@dnd-kit/utilities": "^3.2.2",
+    "@supabase/supabase-js": "^2.56.0",
     "lucide-react": "^0.542.0",
     "next": "15.5.2",
-    "papaparse": "^5.5.3",
     "react": "19.1.0",
     "react-dom": "19.1.0"
   },
