@@ -4,6 +4,7 @@ import React from 'react';
 import {TrendingDown, Star, ArrowRight} from 'lucide-react';
 import Link from 'next/link';
 import CryptoMetrics from "@/components/CryptoMetrics";
+import TWCryptoMarketScreener from "@/components/TWCryptoMarketScreener";
 
 export default function Home() {
 
@@ -24,6 +25,12 @@ export default function Home() {
                         </Link>
                     </div>
                     <CryptoMetrics/>
+
+                    <div className="flex items-center justify-center gap-4 mb-12">
+                        <TWCryptoMarketScreener screenerType={"crypto_mkt"}/>
+                        <TWCryptoMarketScreener screenerType={"performance"}/>
+                    </div>
+
                 </div>
         </div>
     );
