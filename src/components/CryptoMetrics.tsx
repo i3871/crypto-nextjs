@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { TrendingUp, TrendingDown, Bitcoin, PieChart, Gauge } from 'lucide-react';
+import { Bitcoin, PieChart, Gauge } from 'lucide-react';
 
 interface CryptoMetrics {
   btcDominance: number | null;
@@ -73,7 +73,7 @@ export default function CryptoMetrics() {
     colorClass = 'text-blue-400',
     subtitle = ''
   }: {
-    icon: React.ComponentType<any>;
+    icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
     title: string;
     value: number | null;
     suffix?: string;

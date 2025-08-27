@@ -91,7 +91,7 @@ function SortableRow({ item, onRemove }: SortableRowProps) {
   );
 }
 
-export default function SupabaseDataTable({ data, title = "Crypto Symbols", onSymbolRemoved, onOrderChanged }: SupabaseDataTableProps) {
+export default function SupabaseDataTable({ data, onSymbolRemoved, onOrderChanged }: SupabaseDataTableProps) {
   const [sortedData, setSortedData] = useState<CryptoSymbol[]>(data);
   
   const sensors = useSensors(
