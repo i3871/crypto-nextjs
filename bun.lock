@@ -4,10 +4,12 @@
     "": {
       "name": "crypto-nextjs",
       "dependencies": {
+        "@dnd-kit/core": "^6.3.1",
+        "@dnd-kit/sortable": "^10.0.0",
+        "@dnd-kit/utilities": "^3.2.2",
         "@supabase/supabase-js": "^2.56.0",
         "lucide-react": "^0.542.0",
         "next": "15.5.2",
-        "papaparse": "^5.5.3",
         "react": "19.1.0",
         "react-dom": "19.1.0",
       },
@@ -27,6 +29,14 @@
   },
   "packages": {
     "@alloc/quick-lru": ["@alloc/quick-lru@5.2.0", "", {}, "sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw=="],
+
+    "@dnd-kit/accessibility": ["@dnd-kit/accessibility@3.1.1", "", { "dependencies": { "tslib": "^2.0.0" }, "peerDependencies": { "react": ">=16.8.0" } }, "sha512-2P+YgaXF+gRsIihwwY1gCsQSYnu9Zyj2py8kY5fFvUM1qm2WA2u639R6YNVfU4GWr+ZM5mqEsfHZZLoRONbemw=="],
+
+    "@dnd-kit/core": ["@dnd-kit/core@6.3.1", "", { "dependencies": { "@dnd-kit/accessibility": "^3.1.1", "@dnd-kit/utilities": "^3.2.2", "tslib": "^2.0.0" }, "peerDependencies": { "react": ">=16.8.0", "react-dom": ">=16.8.0" } }, "sha512-xkGBRQQab4RLwgXxoqETICr6S5JlogafbhNsidmrkVv2YRs5MLwpjoF2qpiGjQt8S9AoxtIV603s0GIUpY5eYQ=="],
+
+    "@dnd-kit/sortable": ["@dnd-kit/sortable@10.0.0", "", { "dependencies": { "@dnd-kit/utilities": "^3.2.2", "tslib": "^2.0.0" }, "peerDependencies": { "@dnd-kit/core": "^6.3.0", "react": ">=16.8.0" } }, "sha512-+xqhmIIzvAYMGfBYYnbKuNicfSsk4RksY2XdmJhT+HAC01nix6fHCztU68jooFiMUB01Ky3F0FyOvhG/BZrWkg=="],
+
+    "@dnd-kit/utilities": ["@dnd-kit/utilities@3.2.2", "", { "dependencies": { "tslib": "^2.0.0" }, "peerDependencies": { "react": ">=16.8.0" } }, "sha512-+MKAJEOfaBe5SmV6t34p80MMKhjvUz0vRrvVJbPT0WElzaOJ/1xs+D+KDv+tD/NE5ujfrChEcshd4fLn0wpiqg=="],
 
     "@emnapi/core": ["@emnapi/core@1.4.5", "", { "dependencies": { "@emnapi/wasi-threads": "1.0.4", "tslib": "^2.4.0" } }, "sha512-XsLw1dEOpkSX/WucdqUhPWP7hDxSvZiY+fsUC14h+FtQ2Ifni4znbBt8punRX+Uj2JG/uDb8nEHVKvrVlvdZ5Q=="],
 
@@ -661,8 +671,6 @@
     "p-limit": ["p-limit@3.1.0", "", { "dependencies": { "yocto-queue": "^0.1.0" } }, "sha512-TYOanM3wGwNGsZN2cVTYPArw454xnXj5qmWF1bEoAc4+cU/ol7GVh7odevjp1FNHduHc3KZMcFduxU5Xc6uJRQ=="],
 
     "p-locate": ["p-locate@5.0.0", "", { "dependencies": { "p-limit": "^3.0.2" } }, "sha512-LaNjtRWUBY++zB5nE/NwcaoMylSPk+S+ZHNB1TzdbMJMny6dynpAGt7X/tl/QYq3TIeE6nxHppbo2LGymrG5Pw=="],
-
-    "papaparse": ["papaparse@5.5.3", "", {}, "sha512-5QvjGxYVjxO59MGU2lHVYpRWBBtKHnlIAcSe1uNFCkkptUh63NFRj0FJQm7nR67puEruUci/ZkjmEFrjCAyP4A=="],
 
     "parent-module": ["parent-module@1.0.1", "", { "dependencies": { "callsites": "^3.0.0" } }, "sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g=="],
 

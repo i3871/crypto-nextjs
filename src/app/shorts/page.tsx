@@ -2,30 +2,43 @@
 
 import React, {useState, useEffect} from 'react';
 import {TrendingDown, BarChart3} from 'lucide-react';
-import Papa from "papaparse";
+import { supabase } from '@/lib/supabase';
 import SymbolsDashboard from "@/components/SymbolsDashboard";
-import GoogleSheetEmbed from "@/components/GoogleSheetEmbed";
-
-const SHEET_URL = "https://docs.google.com/spreadsheets/d/1uXikZxrJhsAs-ag1qbhNcw8s-eJUu18dYKZWV4QBAuQ/export?format=csv";
+import SupabaseDataTable, { CryptoSymbol } from "@/components/SupabaseDataTable";
+import AddSymbolForm from "@/components/AddSymbolForm";
 
 export default function ShortsPage() {
     const [symbols, setSymbols] = useState<string[]>([]);
+    const [cryptoData, setCryptoData] = useState<CryptoSymbol[]>([]);
+
+    const loadData = async () => {
+        if (!supabase) {
+            console.warn('Supabase not configured');
+            return;
+        }
+        
+        try {
+            const { data, error } = await supabase
+                .from('crypto_symbols')
+                .select('id, symbol, created_at, order_index')
+                .order('order_index');
+
+            if (error) {
+                console.error('Error loading crypto data:', error);
+                return;
+            }
+
+            if (data) {
+                setCryptoData(data);
+                const symbolsList = data.map(item => item.symbol);
+                setSymbols(symbolsList);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
 
     useEffect(() => {
-        const loadData = async () => {
-            try {
-                const response = await fetch(SHEET_URL);
-                const csv = await response.text();
-                const parsed = Papa.parse<string[]>(csv, {skipEmptyLines: true});
-
-                // Extract symbols from first column
-                const symbolsList = parsed.data.map((row) => row[0]);
-                setSymbols(symbolsList);
-            } catch (error) {
-                console.error('Error loading sheet data:', error);
-            }
-        };
-
         void loadData();
     }, []);
 
@@ -57,9 +70,9 @@ export default function ShortsPage() {
                         </div>
                     </div>
                     <div className="bg-gray-800 rounded-lg border border-gray-700 p-6">
-                        <h3 className="text-xl font-bold text-white mb-4">Trading Data</h3>
-                        <GoogleSheetEmbed
-                            sheetUrl="https://docs.google.com/spreadsheets/d/1uXikZxrJhsAs-ag1qbhNcw8s-eJUu18dYKZWV4QBAuQ/edit?usp=sharing"/>
+                        <h3 className="text-xl font-bold text-white mb-4">Crypto Symbols</h3>
+                        <AddSymbolForm onSymbolAdded={loadData} />
+                        <SupabaseDataTable data={cryptoData} onSymbolRemoved={loadData} onOrderChanged={loadData} />
                     </div>
                 </div>
 
