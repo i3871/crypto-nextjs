@@ -3,7 +3,7 @@
 import React, {useState, useEffect} from 'react';
 import {TrendingDown, BarChart3} from 'lucide-react';
 import { supabase } from '@/lib/supabase';
-import SymbolsDashboard from "@/components/SymbolsDashboard";
+import TradingViewWidget from "@/components/TradingViewWidget";
 import SupabaseDataTable, { CryptoSymbol } from "@/components/SupabaseDataTable";
 import AddSymbolForm from "@/components/AddSymbolForm";
 
@@ -54,13 +54,11 @@ export default function ShortsPage() {
                 </div>
 
 
-                {/* Data Sources */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-
-
-                    <div className="bg-gray-800 rounded-lg border border-gray-700 p-6">
-                        <h3 className="text-xl font-bold text-white mb-4">RSI Heatmap</h3>
-                        <div className="w-full h-[800px]">
+                {/* RSI Heatmap and Symbols Layout */}
+                <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 mb-8">
+                    {/* RSI Heatmap - 2/3 width on large screens */}
+                    <div className="xl:col-span-2">
+                        <div className="w-full h-[600px]">
                             <iframe
                                 src="https://www.coinglass.com/pro/i/RsiHeatMap"
                                 title="RSI Heatmap"
@@ -69,23 +67,29 @@ export default function ShortsPage() {
                             />
                         </div>
                     </div>
-                    <div className="bg-gray-800 rounded-lg border border-gray-700 p-6">
-                        <h3 className="text-xl font-bold text-white mb-4">Crypto Symbols</h3>
-                        <AddSymbolForm onSymbolAdded={loadData} />
-                        <SupabaseDataTable data={cryptoData} onSymbolRemoved={loadData} onOrderChanged={loadData} />
+                    
+                    {/* Symbols - 1/3 width on large screens, full width on small screens */}
+                    <div className="xl:col-span-1">
+                        <div className="bg-gray-800 rounded-lg border border-gray-700 p-6">
+                            <h3 className="text-xl font-bold text-white mb-4">Crypto Symbols</h3>
+                            <AddSymbolForm onSymbolAdded={loadData} />
+                            <SupabaseDataTable data={cryptoData} onSymbolRemoved={loadData} onOrderChanged={loadData} />
+                        </div>
                     </div>
                 </div>
 
-                {/* Charts Section - Full Width */}
-                <div className="w-full">
-                    <div className="bg-gray-800 rounded-lg border border-gray-700 p-6">
-                        <div className="flex items-center gap-3 mb-6">
-                            <BarChart3 className="h-6 w-6 text-blue-400"/>
-                            <h2 className="text-xl font-semibold text-white">Technical Analysis Charts</h2>
-                        </div>
-
-                        <SymbolsDashboard symbols={symbols}/>
+                {/* Charts Section - One per row, full width */}
+                <div className="space-y-8">
+                    <div className="flex items-center gap-3 mb-6">
+                        <BarChart3 className="h-6 w-6 text-blue-400"/>
+                        <h2 className="text-xl font-semibold text-white">Technical Analysis Charts</h2>
                     </div>
+                    
+                    {symbols.map((symbol) => (
+                        <div key={symbol} className="w-full">
+                            <TradingViewWidget symbol={`BINANCE:${symbol}`}/>
+                        </div>
+                    ))}
                 </div>
 
 
