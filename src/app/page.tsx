@@ -5,6 +5,7 @@ import {TrendingDown, Star, ArrowRight} from 'lucide-react';
 import Link from 'next/link';
 import CryptoMetrics from "@/components/CryptoMetrics";
 import TWCryptoMarketScreener from "@/components/TWCryptoMarketScreener";
+import TWStories from "@/components/TWStories";
 
 export default function Home() {
 
@@ -26,9 +27,35 @@ export default function Home() {
                     </div>
                     <CryptoMetrics/>
 
-                    <div className="flex items-center justify-center gap-4 mb-12">
-                        <TWCryptoMarketScreener defaultColumn={"overview"}/>
-                        <TWCryptoMarketScreener defaultColumn={"performance"}/>
+                    <div className="mb-16 space-y-8">
+                        <div className="max-w-7xl mx-auto">
+                            <h2 className="text-2xl font-bold text-white text-center mb-8">Latest News</h2>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                <TWStories type="market" market="crypto" />
+                                <TWStories type="market" market="stock" />
+                                <TWStories type="market" market="index" />
+                            </div>
+                        </div>
+
+                        <h2 className="text-2xl font-bold text-white text-center mb-8">Market Analysis</h2>
+                        
+                        {/* Row 1: Market Overview - Large */}
+                        <div className="max-w-7xl mx-auto">
+                            <div className="bg-gray-800 rounded-lg p-6 border border-gray-700 hover:border-gray-600 transition-colors">
+                                <h3 className="text-xl font-semibold text-white mb-6 text-center">Market Overview</h3>
+                                <TWCryptoMarketScreener defaultColumn={"overview"}/>
+                            </div>
+                        </div>
+
+                        {/* Row 2: Performance - Large */}
+                        <div className="max-w-7xl mx-auto">
+                            <div className="bg-gray-800 rounded-lg p-6 border border-gray-700 hover:border-gray-600 transition-colors">
+                                <h3 className="text-xl font-semibold text-white mb-6 text-center">Performance</h3>
+                                <TWCryptoMarketScreener defaultColumn={"performance"}/>
+                            </div>
+                        </div>
+
+
                     </div>
 
                 </div>
