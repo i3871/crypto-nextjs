@@ -3,6 +3,7 @@
 import React from 'react';
 import {TrendingDown, Star, ArrowRight} from 'lucide-react';
 import Link from 'next/link';
+import CryptoMetrics from "@/components/CryptoMetrics";
 
 export default function Home() {
 
@@ -22,6 +23,7 @@ export default function Home() {
                             <ArrowRight className="h-4 w-4" />
                         </Link>
                     </div>
+                    <CryptoMetrics/>
                 </div>
         </div>
     );
