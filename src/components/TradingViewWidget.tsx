@@ -34,7 +34,7 @@ function TradingViewWidget({ symbol, width = 980, height = 610 }: TradingViewWid
             locale: "en",
             save_image: true,
             style: "1",
-            symbol: `BINANCE:${symbol}`,
+            symbol: `${symbol}`,
             theme: "dark",
             timezone: "Etc/UTC",
             backgroundColor: "#0F0F0F",
