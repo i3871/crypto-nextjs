@@ -49,3 +49,9 @@ bun.lockb
 
 # logs
 *.log
+
+# OpenNext build artifacts
+.open-next/
+
+# Wrangler
+.wrangler/
